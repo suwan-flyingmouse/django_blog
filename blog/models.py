@@ -11,4 +11,7 @@ class Post(models.Model):
         # 장고의 모델을 만들면 자동으로 pk가 만들어진다.
         # 이 값을 이용해 포스트의 제목과 번호를 문자열로 표현한다.
         return f'{self.title}'
+
+    def get_absolute_url(self):
+        return f'/blog/{self.pk}/'
 # Create your models here.
