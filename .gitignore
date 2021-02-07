@@ -131,3 +131,4 @@ dmypy.json
 # vscode
 blog/migrations/
 .vscode
+_media/
