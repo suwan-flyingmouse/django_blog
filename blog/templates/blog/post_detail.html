@@ -5,10 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>post list</title>
+    <title>{{ post.title }} - Blog</title>
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
     <script src="https://kit.fontawesome.com/babb3a060f.js" crossorigin="anonymous"></script>
-    <title>{{ post.title }} - Blog</title>
 </head>
 
 <body>
@@ -120,6 +119,22 @@
                 <hr>
                 <!-- Post Content -->
                 {{ post.content }}
+
+                <!-- Download Button -->
+                <hr>
+                {% if post.file_upload %}
+                <a href="{{ post.file_upload.url }}" class="btn btn-outline-dark" role="button"> Download: 
+                    {% if post.get_file_ext == 'csv' %}
+                        <i class="fas fa-file-csv"></i>
+                    {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                        <i class="fas fa-file-excel"></i>
+                    {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc' %}
+                        <i class="fas fa-file-word"></i>
+                    {% else %}
+                        <i class="fas fa-file"></i>
+                    {% endif %}
+                    {{ post.get_file_name }}</a>
+                {% endif %}
                 <hr>
 
                 <!-- Comments Form -->
