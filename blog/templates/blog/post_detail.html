@@ -111,7 +111,11 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="">
+                {% if post.head_image %}
+                <img class="card-img-top" src="{{ post.head_image.url }}" alt="{{ post }}'s head image">
+                {% else %}
+                <img class="card-img-top" src="https://picsum.photos/seed/{{ post.id }}/800/400" alt="no image">
+                {% endif %}
 
                 <hr>
                 <!-- Post Content -->
